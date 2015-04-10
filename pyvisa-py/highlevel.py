@@ -10,7 +10,7 @@
     :license: MIT, see LICENSE for more details.
 """
 
-from __future__ import division, unicode_literals, print_function, absolute_import
+
 
 import warnings
 
@@ -77,7 +77,7 @@ class PyVisaLibrary(highlevel.VisaLibraryBase):
         d = OrderedDict()
         d['Version'] = '%s' % __version__
 
-        for key, val in PyVisaLibrary.get_session_classes().items():
+        for key, val in list(PyVisaLibrary.get_session_classes().items()):
             key_name = '%s %s' % (key[0].name.upper(), key[1])
             try:
                 d[key_name] = getattr(val, 'session_issue').split('\n')

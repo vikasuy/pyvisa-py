@@ -15,7 +15,7 @@
     :license: MIT, see LICENSE for more details.
 """
 
-from __future__ import division, unicode_literals, print_function, absolute_import
+
 
 from fnmatch import fnmatch
 
@@ -190,7 +190,7 @@ def find_devices(vendor=None, product=None, serial_number=None, custom_match=Non
         def cm(dev):
             if custom_match is not None and not custom_match(dev):
                 return False
-            for attr, pattern in attrs.items():
+            for attr, pattern in list(attrs.items()):
                 if not fnmatch(getattr(dev, attr).lower(), pattern.lower()):
                     return False
             return True
