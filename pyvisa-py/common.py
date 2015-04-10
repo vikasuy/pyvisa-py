@@ -9,7 +9,7 @@
     :license: MIT, see LICENSE for more details.
 """
 
-from __future__ import division, unicode_literals, print_function, absolute_import
+
 
 import sys
 
@@ -120,7 +120,7 @@ def call_subparser(interface_type_part, resource_class, *parts):
 
     :raises ValueError: if the interface is unknown.
     """
-    for interface_type, const in _INTERFACE_TYPES.items():
+    for interface_type, const in list(_INTERFACE_TYPES.items()):
         if not interface_type_part.upper().startswith(interface_type):
             continue
 

@@ -10,7 +10,7 @@
     :license: MIT, see LICENSE for more details.
 """
 
-from __future__ import division, unicode_literals, print_function, absolute_import
+
 
 import abc
 import time
@@ -96,7 +96,7 @@ class Session(compat.with_metaclass(abc.ABCMeta)):
         valid sessions classes.
         """
 
-        for key, val in cls._session_classes.items():
+        for key, val in list(cls._session_classes.items()):
             if issubclass(val, Session):
                 yield key, val
 
@@ -105,7 +105,7 @@ class Session(compat.with_metaclass(abc.ABCMeta)):
         """Yield (Interface Type, Resource Class), Issues class pair for
         invalid sessions classes (i.e. those with import errors).
         """
-        for key, val in cls._session_classes.items():
+        for key, val in list(cls._session_classes.items()):
             try:
                 yield key, getattr(val, 'session_issue')
             except AttributeError:
